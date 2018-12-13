@@ -1,0 +1,15 @@
+[Unit]
+Description=SCHub uWSGI Emperor
+After=syslog.target
+
+[Service]
+ExecStart=/usr/local/bin/uwsgi --ini /home/schub/SCHub/uwsgi.ini
+RuntimeDirectory=uwsgi
+Restart=always
+KillSignal=SIGQUIT
+Type=notify
+StandardError=syslog
+NotifyAccess=all
+
+[Install]
+WantedBy=multi-user.target
